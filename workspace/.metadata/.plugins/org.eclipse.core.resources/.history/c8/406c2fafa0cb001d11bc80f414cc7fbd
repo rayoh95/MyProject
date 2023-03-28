@@ -1,0 +1,13 @@
+package com.project.odw.like.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class LikeServiceImpl implements LikeService {
+
+	@Override
+	public void likeSend(String likeSend, String likeReceive) throws Exception {
+		
+	}
+
+}

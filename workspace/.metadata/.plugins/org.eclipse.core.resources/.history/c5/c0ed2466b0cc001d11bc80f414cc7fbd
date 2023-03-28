@@ -1,0 +1,7 @@
+package com.project.odw.like.service;
+
+public interface LikeService {
+	
+	public void likeSend(String likeSend, String likeReceive) throws Exception;
+	public String likeChk(String likeSend, String likeReceive) throws Exception;
+}

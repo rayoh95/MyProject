@@ -1,0 +1,25 @@
+package com.project.odw.like.dao;
+
+import java.util.HashMap;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class LikeDaoImpl implements LikeDao {
+	
+	@Autowired
+	SqlSession sqlSession;
+
+	@Override
+	public void insertLike(HashMap<String, Object> likeData) throws Exception {
+		sqlSession.insert("mapper.like.insertLike", likeData);
+	}
+
+	@Override
+	public int likeChk(String likeSend, String likeReceive) throws Exception {
+		return 0;
+	}
+
+}

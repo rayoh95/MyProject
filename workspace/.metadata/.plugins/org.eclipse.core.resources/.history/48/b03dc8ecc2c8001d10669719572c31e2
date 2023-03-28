@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.board">
+	
+	<insert id="insertBoard" parameterType="BoardDto">
+		INSERT INTO ODW_BOARD (
+				WRITER,
+				TITLE,
+				REG_DATE,
+				READ_COUNT,
+				CONTENT,
+				IMAGE
+		)
+		VALUES (
+				#{writer},
+				#{title},
+				NOW(),
+				0,
+				#{content},
+				#{image}
+		)
+	</insert>
+	
+	<select id="getBoardList" resultType="BoardDto">
+		SELECT
+				*
+		FROM
+				ODW_BOARD
+		ORDER BY
+				REF DESC
+	</select>
+	
+	<select id="getOneBoard" parameterType="int" resultType="BoardDto" >
+		SELECT
+				*
+		FROM
+				ODW_BOARD
+		WHERE
+				NUM = #{num}
+	</select>
+	
+	<update id="increaseReadCount" parameterType="int">
+		UPDATE
+				ODW_BOARD
+		SET
+				READ_COUNT = READ_COUNT + 1
+		WHERE
+				NUM = #{num}
+	</update>
+	
+	<update id="updateBoard" parameterType="BoardDto">
+		UPDATE
+				ODW_BOARD
+		SET
+				TITLE = #{title},
+				REG_DATE = NOW(),
+				CONTENT = #{content},
+				IMAGE = #{image}
+		WHERE
+				NUM = #{num}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM
+				ODW_BOARD
+		WHERE
+				NUM = #{num}
+	</delete>
+	
+</mapper>

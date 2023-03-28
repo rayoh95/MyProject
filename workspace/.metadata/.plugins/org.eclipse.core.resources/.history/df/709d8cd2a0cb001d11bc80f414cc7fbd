@@ -1,0 +1,5 @@
+package com.project.odw.like.dao;
+
+public interface LikeDao {
+
+}

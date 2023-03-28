@@ -1,0 +1,19 @@
+package com.project.odw.like.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.odw.like.dao.LikeDao;
+
+@Service
+public class LikeServiceImpl implements LikeService {
+	
+	@Autowired
+	private LikeDao likeDao;
+
+	@Override
+	public void likeSend(String likeSend, String likeReceive) throws Exception {
+		likeDao.insertLike(likeSend, likeReceive);
+	}
+
+}
