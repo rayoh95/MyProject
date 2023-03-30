@@ -87,17 +87,16 @@
 					<a href="${contextPath }/member/info?memberId=${memberDto.memberId}">${memberDto.memberId}</a><br>
 					${memberDto.memberHeight }<br>
 					<fmt:formatDate value="${memberDto.joinDate}" pattern="yyyy-MM-dd" /><br>
-				<!--	<p onload="btnCheck('${memberDto.memberId}')">	-->
-					<button onclick="btnChk('${memberDto.memberId }')">좋아요 버튼 생성</button>
+				<p onload="btnCheck('${memberDto.memberId}')">
 					<c:choose>
 						<c:when test="${send eq 'true' }">
 							<button class="button buttonDisabled" disabled>좋아요</button><br>
 						</c:when>
-						<c:when test="${send eq 'false' }">
+						<c:otherwise>
 							<button class="button buttonAbled" id="btnLike${memberDto.memberId }" onclick="likeAble('${memberDto.memberId}')">좋아요</button><br>
-						</c:when>
+						</c:otherwise>
 					</c:choose>
-				<!--	</p>		-->
+				</p>
 					<br>
 				</c:forEach>
 			</c:otherwise>

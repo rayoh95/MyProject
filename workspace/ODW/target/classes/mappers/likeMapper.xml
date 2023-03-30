@@ -3,7 +3,7 @@
 	
 <mapper namespace="mapper.like">
 
-	<insert id="inserLike" parameterType="LikeDto">
+	<insert id="insertLike" parameterType="LikeDto">
 		INSERT INTO ODW_LIKE (
 					LIKE_SEND,
 					LIKE_RECEIVE

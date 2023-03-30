@@ -33,20 +33,6 @@
 	    }
 	}
 </script>
-<script>
-	function btnChk(id) {
-		$.ajax({
-    		type : "post",
-    		url : "${contextPath}/like/likeChk",
-    		data : {
-    			"likeReceive" : id
-    		},
-    		success : function(){
-				return;
-    		}
-    	});
-	}
-</script>
 <title>main</title>
 </head>
 <style>
@@ -96,7 +82,7 @@
 							<button class="button buttonAbled" id="btnLike${memberDto.memberId }" onclick="likeAble('${memberDto.memberId}')">좋아요</button><br>
 						</c:otherwise>
 					</c:choose>
-				<!--	</p>		-->
+				</p>
 					<br>
 				</c:forEach>
 			</c:otherwise>
