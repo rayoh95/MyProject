@@ -4,8 +4,28 @@
 <mapper namespace="mapper.member">
 
 	<insert id="joinMember" parameterType="MemberDto">
-		INSERT INTO
-					ODW_MEMBER
+		INSERT INTO ODW_MEMBER
+				(
+					PROFILE_IMAGE,
+					MEMBER_ID,
+					MEMBER_PW,
+					MEMBER_GENDER,
+					MEMBER_HEIGHT,
+					MEMBER_BIRTH_Y,
+					MEMBER_BIRTH_M,
+					MEMBER_BIRTH_D,
+					HP1,
+					HP2,
+					HP3,
+					SMSSTS_YN,
+					EMAIL,
+					EMAILSTS_YN,
+					ZIPCODE,
+					ROADADDRESS,
+					NUMBERADDRESS,
+					REMAINADDRESS,
+					JOIN_DATE
+		)
 		VALUES	(
 					#{profileImage},
 					#{memberId},

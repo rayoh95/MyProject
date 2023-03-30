@@ -33,20 +33,6 @@
 	    }
 	}
 </script>
-<script>
-	function btnChk(id) {
-		$.ajax({
-    		type : "post",
-    		url : "${contextPath}/like/likeChk",
-    		data : {
-    			"likeReceive" : id
-    		},
-    		success : function(){
-				return;
-    		}
-    	});
-	}
-</script>
 <title>main</title>
 </head>
 <style>
