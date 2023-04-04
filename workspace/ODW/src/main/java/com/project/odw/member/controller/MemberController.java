@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.odw.like.service.LikeService;
 import com.project.odw.member.dto.MemberDto;
 import com.project.odw.member.service.MemberService;
 
@@ -170,6 +171,18 @@ public class MemberController {
 		}
 		
 		return htmlBody;
+	}
+	
+	@RequestMapping(value="/receiveList", method=RequestMethod.GET)
+	public ModelAndView receiveList(HttpServletRequest request) throws Exception {
+		
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		
+		mv.setViewName("like/rList");
+		mv.addObject("likeReceiveList", memberService.getLikeReceiveList((String)session.getAttribute("loginUser")));
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)

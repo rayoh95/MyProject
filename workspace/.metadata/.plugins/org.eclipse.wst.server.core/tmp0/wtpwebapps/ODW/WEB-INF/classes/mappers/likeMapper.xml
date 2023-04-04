@@ -20,7 +20,8 @@
 		FROM
 				ODW_LIKE
 		WHERE
-				LIKE_SEND = #{likeSend},
+				LIKE_SEND = #{likeSend}
+				AND
 				LIKE_RECEIVE = #{likeReceive}
 	</select>
 	

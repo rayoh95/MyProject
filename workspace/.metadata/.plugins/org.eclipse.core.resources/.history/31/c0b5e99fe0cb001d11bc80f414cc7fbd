@@ -1,6 +1,0 @@
-package com.project.odw.like.dao;
-
-public interface LikeDao {
-
-	public void insertLike(String likeSend, String likeReceive) throws Exception;
-}

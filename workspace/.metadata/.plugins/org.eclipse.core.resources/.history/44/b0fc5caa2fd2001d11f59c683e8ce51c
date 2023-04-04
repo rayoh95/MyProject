@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.like">
+
+	<insert id="insertLike" parameterType="LikeDto">
+		INSERT INTO ODW_LIKE (
+					LIKE_SEND,
+					LIKE_RECEIVE
+		)
+		VALUES	(
+					#{likeSend},
+					#{likeReceive}
+		)
+	</insert>
+	
+	<select id="likeChk" parameterType="LikeDto" resultType="Integer">
+		SELECT
+				COUNT(*)
+		FROM
+				ODW_LIKE
+		WHERE
+				LIKE_SEND = #{likeSend},
+				LIKE_RECEIVE = #{likeReceive}
+	</select>
+	
+	<select id="selectReceive" parameterType="String" resultType="LikeDto">
+		SELECT
+				*
+		FROM
+				ODW_LIKE
+		WHERE
+				LIKE_RECEIVE = #{id}
+	</select>
+
+</mapper>

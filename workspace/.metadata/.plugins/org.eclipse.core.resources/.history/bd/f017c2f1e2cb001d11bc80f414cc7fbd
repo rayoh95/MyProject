@@ -1,8 +1,0 @@
-package com.project.odw.like.dao;
-
-import java.util.HashMap;
-
-public interface LikeDao {
-
-	public void insertLike(HashMap<String,String> likeData) throws Exception;
-}

@@ -2,6 +2,7 @@ package com.project.odw.member.service;
 
 import java.io.File;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,8 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.project.odw.like.dto.LikeDto;
+import com.project.odw.like.service.LikeService;
 import com.project.odw.member.dao.MemberDao;
 import com.project.odw.member.dto.MemberDto;
+import com.project.odw.member.dto.SimpleMemberDto;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -21,6 +25,8 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	private MemberDao memberDao;
+	@Autowired
+	private LikeService likeService;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -150,11 +156,43 @@ public class MemberServiceImpl implements MemberService{
 		memberDao.deleteMember(memberId);
 	}
 
-	public List<MemberDto> showAllMember(String memberId) throws Exception {
+	public List<SimpleMemberDto> showAllMember(String memberId) throws Exception {
 		
 		MemberDto memberDto = memberDao.selectOneMember(memberId);
 		
-		return memberDao.selectAllMember(memberDto.getMemberGender());
+		List<MemberDto> memberList = memberDao.selectAllMember(memberDto.getMemberGender());
+		List<SimpleMemberDto> sMemberList = new ArrayList<>();
+		
+		for (MemberDto member : memberList) {
+			SimpleMemberDto simpleMemberDto = new SimpleMemberDto();
+			simpleMemberDto.setMemberId(member.getMemberId());
+			simpleMemberDto.setProfileImage(member.getProfileImage());
+			simpleMemberDto.setMemberHeight(member.getMemberHeight());
+			simpleMemberDto.setJoinDate(member.getJoinDate());
+			String likeChk = likeService.likeChk(memberId, member.getMemberId());
+			
+			if (likeChk == "true") {
+				simpleMemberDto.setSentLike(true);
+			}
+			else {
+				simpleMemberDto.setSentLike(false);
+			}
+			sMemberList.add(simpleMemberDto);
+		}
+		
+		return sMemberList;
+	}
+
+	@Override
+	public List<MemberDto> getLikeReceiveList(String id) throws Exception {
+		
+		List<MemberDto> likeReceiveList = new ArrayList<>();
+		
+		for (LikeDto likeDto : likeService.getLikeReceiveList(id)) {
+			likeReceiveList.add(memberDao.selectOneMember(likeDto.getLikeSend()));
+		}
+		
+		return likeReceiveList;
 	}
 
 	@Override
@@ -166,5 +204,6 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDto getAutoLogin(String autoLogin) throws Exception {
 		return memberDao.getAutoLogin(autoLogin);
 	}
+
 
 }

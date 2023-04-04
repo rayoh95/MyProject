@@ -31,14 +31,6 @@ public class LikeController {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/likeChk", method=RequestMethod.POST)
-	public ResponseEntity<Object> likeChk(HttpServletRequest request, @RequestParam("likeReceive") String likeReceive) throws Exception {
-		
-		HttpSession session = request.getSession();
-		
-		return new ResponseEntity<Object>(likeService.likeChk((String)session.getAttribute("loginUser"), likeReceive), HttpStatus.OK);
-	}
-	
 	@RequestMapping(value="/receiveList", method=RequestMethod.GET)
 	public ModelAndView receiveList(HttpServletRequest request) throws Exception {
 		

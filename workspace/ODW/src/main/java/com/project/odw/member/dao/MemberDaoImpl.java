@@ -16,29 +16,7 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void insertMember(MemberDto memberDto) throws Exception {
-		System.out.println(memberDto.getProfileImage());
-		System.out.println(memberDto.getMemberId());
-		System.out.println(memberDto.getMemberPw());
-		System.out.println(memberDto.getMemberGender());
-		System.out.println(memberDto.getMemberHeight());
-		System.out.println(memberDto.getMemberBirthY());
-		System.out.println(memberDto.getMemberBirthM());
-		System.out.println(memberDto.getMemberBirthD());
-		System.out.println(memberDto.getHp1());
-		System.out.println(memberDto.getHp2());
-		System.out.println(memberDto.getHp3());
-		System.out.println(memberDto.getSmsstsYn());
-		System.out.println(memberDto.getEmail());
-		System.out.println(memberDto.getEmailstsYn());
-		System.out.println(memberDto.getZipcode());
-		System.out.println(memberDto.getRoadAddress());
-		System.out.println(memberDto.getNumberAddress());
-		System.out.println(memberDto.getRemainAddress());
-		try {
-			sqlSession.insert("mapper.member.joinMember", memberDto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		sqlSession.insert("mapper.member.joinMember", memberDto);
 	}
 
 	@Override

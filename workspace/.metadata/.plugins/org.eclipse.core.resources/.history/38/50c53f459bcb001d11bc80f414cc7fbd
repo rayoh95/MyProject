@@ -1,6 +1,0 @@
-package com.project.odw.like.service;
-
-public interface LikeService {
-	
-	public void likeSend(String likeSend) throws Exception;
-}
