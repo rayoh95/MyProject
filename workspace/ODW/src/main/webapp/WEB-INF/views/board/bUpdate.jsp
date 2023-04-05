@@ -23,7 +23,9 @@
 </script>
 </head>
 <body>
-	<div align="center" style="padding-top: 50px">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center" style="padding-top: 50px">
 		<form action="${contextPath }/board/update?num=${boardDto.num }" enctype="multipart/form-data" method="post" >
 			<!-- <input type="hidden" name="num" value=${boardDto.num }/> -->
 			<div align="center">

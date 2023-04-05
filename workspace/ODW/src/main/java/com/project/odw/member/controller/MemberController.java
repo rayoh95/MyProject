@@ -31,6 +31,8 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private LikeService likeService;
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public ModelAndView join() {
@@ -121,11 +123,13 @@ public class MemberController {
 	public ModelAndView myPage(HttpServletRequest request, @RequestParam("memberId") String memberId) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
 		LocalDate now = LocalDate.now();
 		
 		int year = now.getYear();
 		
 		mv.addObject("memberDto", memberService.showOneMember(memberId));
+		mv.addObject("send", likeService.likeChk((String)session.getAttribute("loginUser"), memberId));
 		mv.addObject("year", year);
 		mv.setViewName("member/info");
 		

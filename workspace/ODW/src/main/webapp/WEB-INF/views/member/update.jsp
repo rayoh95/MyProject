@@ -52,7 +52,9 @@
 <title>update</title>
 </head>
 <body>
-	<form action="${contextPath}/member/update" enctype="multipart/form-data" method="post">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<form class="content" action="${contextPath}/member/update" enctype="multipart/form-data" method="post">
 		<table border="1">
 			<tr>
 				<td>프로필</td>

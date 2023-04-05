@@ -60,7 +60,9 @@
 	}
 </style>
 <body>
-	<div align="center">
+	<%@ include file="../views/default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center">
 		<c:choose>
 			<c:when test="${empty memberList}">
 				<tr>

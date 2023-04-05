@@ -10,7 +10,9 @@
 <title>boardList</title>
 </head>
 <body>
-	<div align="center">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center">
 		<h1>전체 게시글 목록</h1>
 		<table style="width: 700px"border="1">
 			<tr>

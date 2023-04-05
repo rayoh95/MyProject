@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>login</title>
 </head>
-<body>
-	<h1>Login</h1>
+<body style="text-align:center;">
+	<h1 align="center">Login</h1>
 	<br>
-	<form action="${contextPath}/member/login" method="post">
+	<form style="margin:auto; width:220px;" action="${contextPath}/member/login" method="post">
 		<table border="1">
 			<tr>
 				<td align="center">아이디</td>

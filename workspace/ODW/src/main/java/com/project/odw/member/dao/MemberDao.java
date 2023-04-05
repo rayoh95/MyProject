@@ -15,5 +15,4 @@ public interface MemberDao {
 	public List<MemberDto> selectAllMember(String memberGender) throws Exception;
 	public void keepLogin(String id) throws Exception;
 	public MemberDto getAutoLogin(String autoLogin) throws Exception;
-	
 }

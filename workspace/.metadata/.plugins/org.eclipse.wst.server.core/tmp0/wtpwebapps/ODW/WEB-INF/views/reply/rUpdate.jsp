@@ -10,7 +10,9 @@
 <title>update</title>
 </head>
 <body>
-	<div align="center">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center">
 		<form action="${contextPath }/reply/update?num=${replyDto.num }&bNum=${replyDto.bNum }" method="post" >
 			<p><textarea rows="2" cols="100" name="content">${replyDto.content }</textarea></p>
 			<input type="submit" value="수정" />

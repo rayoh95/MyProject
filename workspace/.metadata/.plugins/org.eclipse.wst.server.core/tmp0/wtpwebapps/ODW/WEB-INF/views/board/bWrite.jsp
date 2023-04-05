@@ -42,7 +42,9 @@
 </script>
 </head>
 <body>
-	<div align="center" style="padding-top: 100px">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center" style="padding-top: 100px">
 		<form action="${contextPath}/board/write" enctype="multipart/form-data" method="post" >
 			<div align="center">
 				<h2>게시글 쓰기</h2>

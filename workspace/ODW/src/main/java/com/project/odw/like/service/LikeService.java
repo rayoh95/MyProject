@@ -9,4 +9,5 @@ public interface LikeService {
 	public void likeSend(String likeSend, String likeReceive) throws Exception;
 	public String likeChk(String likeSend, String likeReceive) throws Exception;
 	public List<LikeDto> getLikeReceiveList(String id) throws Exception;
+
 }

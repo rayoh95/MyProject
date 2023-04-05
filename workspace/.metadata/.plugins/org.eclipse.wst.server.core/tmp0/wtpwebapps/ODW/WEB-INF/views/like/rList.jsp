@@ -11,7 +11,9 @@
 <title>receiveList</title>
 </head>
 <body>
-	<div align="center">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center">
 		<c:choose>
 			<c:when test="${empty likeReceiveList}">
 				<tr>

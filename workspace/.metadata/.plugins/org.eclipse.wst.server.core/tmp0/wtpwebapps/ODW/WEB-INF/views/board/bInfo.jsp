@@ -19,7 +19,9 @@
 <title>info</title>
 </head>
 <body>
-	<div align="center" style="padding-top: 50px">
+	<%@ include file="../default/header.jsp" %>
+	<br><br>
+	<div class="content" align="center" style="padding-top: 50px">
 		<div align="center">
 			<h1>게시글 보기</h1>
 			<br>
@@ -56,8 +58,10 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="수정하기" onclick="location.href='${contextPath }/board/update?num=${boardDto.num}'">
-					<button type="button" onclick="call_confirm()">삭제하기</button>
+					<c:if test="${loginUser eq boardDto.writer }">
+						<input type="button" value="수정하기" onclick="location.href='${contextPath }/board/update?num=${boardDto.num}'">
+						<button type="button" onclick="call_confirm()">삭제하기</button>
+					</c:if>
 					<input type="button" value="목록보기" onclick="location.href='${contextPath }/board/boardList'">
 				</td>
 			</tr>
@@ -82,10 +86,12 @@
 						<td>${replyDto.writer }</td>
 						<td>${replyDto.content }</td>
 						<td><fmt:formatDate value="${replyDto.regDate }" pattern="yyyy-MM-dd"/></td>
-						<td>
-							<a href="${contextPath }/reply/update?num=${replyDto.num }">수정</a>
-							<a href="${contextPath }/reply/delete?num=${replyDto.num }&bNum=${replyDto.bNum }">삭제</a>
-						</td>
+						<c:if test="${loginUser eq replyDto.writer }">
+							<td>
+								<a href="${contextPath }/reply/update?num=${replyDto.num }">수정</a>
+								<a href="${contextPath }/reply/delete?num=${replyDto.num }&bNum=${replyDto.bNum }">삭제</a>
+							</td>
+						</c:if>
 					</tr>
 				</c:forEach>
 				<tr>
