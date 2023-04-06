@@ -73,8 +73,8 @@
 				<c:forEach var="memberDto" items="${memberList}">
 					<a href="${contextPath }/member/info?memberId=${memberDto.memberId}"><img src="${contextPath }/member/profile?fileName=${memberDto.profileImage }" /></a><br>
 					<a href="${contextPath }/member/info?memberId=${memberDto.memberId}">${memberDto.memberId}</a><br>
-					${memberDto.memberHeight }<br>
-					<fmt:formatDate value="${memberDto.joinDate}" pattern="yyyy-MM-dd" /><br>
+					${memberDto.memberHeight } cm<br>
+					가입일 : <fmt:formatDate value="${memberDto.joinDate}" pattern="yyyy-MM-dd" /><br>
 					<c:choose>
 						<c:when test="${memberDto.sentLike}">
 							<button class="button buttonDisabled" disabled>좋아요</button><br>

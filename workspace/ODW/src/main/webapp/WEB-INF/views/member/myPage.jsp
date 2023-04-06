@@ -22,8 +22,8 @@
 	<div class="content" align="center">
 		<img src="${contextPath }/member/profile?fileName=${memberDto.profileImage }" /><br>
 		${memberDto.memberId }<br>
-		${year - memberDto.memberBirthY + 1 }<br>
-		${memberDto.memberHeight }<br>
+		${year - memberDto.memberBirthY + 1 } 세<br>
+		${memberDto.memberHeight } cm<br>
 		${memberDto.roadAddress } ${memberDto.remainAddress }<br>
 		<button type="button" onclick="location.href='${contextPath}/member/update'">프로필 수정</button>
 		<button type="button" onclick="call_confirm()">회원탈퇴</button>

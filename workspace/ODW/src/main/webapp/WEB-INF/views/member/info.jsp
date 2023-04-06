@@ -66,8 +66,8 @@
 	<div class="content" align="center">
 		<img src="${contextPath }/member/profile?fileName=${memberDto.profileImage }" /><br>
 		${memberDto.memberId }<br>
-		${year - memberDto.memberBirthY + 1 }<br>
-		${memberDto.memberHeight }<br>
+		${year - memberDto.memberBirthY + 1 } 세<br>
+		${memberDto.memberHeight } cm<br>
 		${memberDto.roadAddress } ${memberDto.remainAddress }<br>
 		<c:choose>
 			<c:when test="${send eq 'true'}">

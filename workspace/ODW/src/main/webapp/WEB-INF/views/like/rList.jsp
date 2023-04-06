@@ -24,8 +24,8 @@
 				<c:forEach var="memberDto" items="${likeReceiveList}">
 					<a href="${contextPath }/member/info?memberId=${memberDto.memberId}"><img src="${contextPath }/member/profile?fileName=${memberDto.profileImage }" /></a><br>
 					<a href="${contextPath }/member/info?memberId=${memberDto.memberId}">${memberDto.memberId}</a><br>
-					${memberDto.memberHeight }<br>
-					<fmt:formatDate value="${memberDto.joinDate}" pattern="yyyy-MM-dd" /><br>
+					${memberDto.memberHeight } cm<br>
+					가입일 : <fmt:formatDate value="${memberDto.joinDate}" pattern="yyyy-MM-dd" /><br>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>

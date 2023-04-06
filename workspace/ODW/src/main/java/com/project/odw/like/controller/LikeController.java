@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.odw.like.service.LikeService;
+import com.project.odw.member.service.MemberService;
 
 @Controller
 @RequestMapping("/like")
@@ -20,6 +21,8 @@ public class LikeController {
 	
 	@Autowired
 	private LikeService likeService;
+	@Autowired
+	private MemberService memberService;
 
 	@RequestMapping(value="/send", method=RequestMethod.POST)
 	public ResponseEntity<Object> send(HttpServletRequest request, @RequestParam("likeReceive") String likeReceive) throws Exception {
@@ -38,7 +41,7 @@ public class LikeController {
 		HttpSession session = request.getSession();
 		
 		mv.setViewName("like/rList");
-		mv.addObject("likeReceiveList", likeService.getLikeReceiveList((String)session.getAttribute("loginUser")));
+		mv.addObject("likeReceiveList", memberService.getLikeReceiveList((String)session.getAttribute("loginUser")));
 		
 		return mv;
 	}
