@@ -2,7 +2,7 @@ package com.project.odw.board.service;
 
 import java.io.File;
 import java.io.OutputStream;
-import java.util.List;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -54,8 +55,25 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDto> getBoardList() throws Exception {
-		return boardDao.selectAll();
+	public void getBoardList(Model model, int page) throws Exception {
+		
+		int allCount = boardDao.getCount();
+		
+		int pageLetter = 10;						// 한 페이지에 몇 개의 개시물을 설정할 것인가.
+		int repeat = allCount / pageLetter;
+		
+		if (allCount % pageLetter != 0) repeat += 1;
+		
+		int end = page * pageLetter;
+		int start = end - pageLetter + 1;
+		
+		HashMap<String, Integer> map = new HashMap<>();
+		
+        map.put("start", start);
+        map.put("end", end);
+		
+		model.addAttribute("repeat", repeat);
+		model.addAttribute("boardList", boardDao.selectAll(map));
 	}
 
 	@Override

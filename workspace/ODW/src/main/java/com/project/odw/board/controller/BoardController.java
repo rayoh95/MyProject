@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,13 +42,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/boardList", method=RequestMethod.GET)
-	public ModelAndView boardList() throws Exception {
+	public String boardList(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) throws Exception {
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/bList");
-		mv.addObject("boardList", boardService.getBoardList());
+		boardService.getBoardList(model, page);
 		
-		return mv;
+		return "board/bList";
 	}
 	
 	@RequestMapping(value="/image", method=RequestMethod.GET)

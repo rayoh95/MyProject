@@ -1,6 +1,7 @@
 package com.project.odw.board.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,13 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<BoardDto> selectAll() throws Exception {
-		return sqlSession.selectList("mapper.board.getBoardList");
+	public List<BoardDto> selectAll(Map<String, Integer> map) throws Exception {
+		return sqlSession.selectList("mapper.board.getBoardList", map);
+	}
+
+	@Override
+	public int getCount() throws Exception {
+		return sqlSession.selectOne("mapper.board.getBoardCount");
 	}
 
 	@Override
@@ -43,5 +49,6 @@ public class BoardDaoImpl implements BoardDao {
 	public void deleteBoard(int num) throws Exception {
 		sqlSession.delete("mapper.board.deleteBoard", num);
 	}
+
 
 }

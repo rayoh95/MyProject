@@ -32,6 +32,27 @@
 			</c:forEach>
 			</tr>
 			<tr>
+				<td colspan="6" align="center">
+					<c:choose>
+						<c:when test="${param.num == null }">
+							<c:set var="start" value="1"/>
+						</c:when>
+						<c:otherwise>
+							<c:set var="start" value="${param.page }"/>
+						</c:otherwise>
+					</c:choose>
+					<c:if test="${start > 1 }">
+						<a href="boardList?page=${start-1 }">이전</a>
+					</c:if>
+					<c:forEach var="page" begin="1" end="${repeat }">
+						<a href="boardList?page=${page }">${page } &nbsp;</a>
+					</c:forEach>
+					<c:if test="${start < repeat }">
+						<a href="boardList?page=${start+1 }">다음</a>
+					</c:if>
+				</td>
+			</tr>
+			<tr>
 				<td colspan="5" align="right"><input type="button" value="글쓰기" onclick="location.href='${contextPath }/board/write'"/></td>
 			</tr>
 		</table>

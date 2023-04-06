@@ -22,14 +22,37 @@
 		)
 	</insert>
 	
-	<select id="getBoardList" resultType="BoardDto">
-		SELECT
+	<select id="getBoardList" parameterType="HashMap" resultType="BoardDto">
+		<!-- SELECT
 				*
 		FROM
 				ODW_BOARD
 		ORDER BY
-				NUM DESC
+				NUM DESC -->
+		SELECT
+				A.*
+		FROM
+				(
+				SELECT
+						@ROWNUM := @ROWNUM + 1	AS ROWNUM,
+						B.*
+				FROM
+						ODW_BOARD				B,
+						(SELECT @ROWNUM := 0)	TMP
+				ORDER BY
+						NUM DESC
+		)		A
+		WHERE
+				ROWNUM BETWEEN #{start} AND #{end}
 	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		SELECT
+				COUNT(*)
+		FROM
+				ODW_BOARD
+	</select>
+	
 	
 	<select id="getOneBoard" parameterType="int" resultType="BoardDto" >
 		SELECT
