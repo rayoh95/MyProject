@@ -41,4 +41,3 @@ FROM
 		ODW_MEMBER;
         
 DROP TABLE ODW_MEMBER;
-

@@ -16,4 +16,3 @@ FROM
 		ODW_REPLY;
         
 DROP TABLE ODW_REPLY;
-        
